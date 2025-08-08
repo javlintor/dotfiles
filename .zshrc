@@ -110,4 +110,6 @@ export XDG_CONFIG_HOME=$HOME/.config
 alias nvim-semantic-layer="cd ~/ifco-digital-semantic-layer && source ./.venv/bin/activate && nvim ~/ifco-digital-semantic-layer"
 alias nvim-data-apps="cd ~/ifco-digital-data-apps && source ./.venv/bin/activate && nvim ~/ifco-digital-data-apps"
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if command -v brew >/dev/null 2>&1; then
+  eval "$("$(command -v brew)" shellenv)"
+fi
