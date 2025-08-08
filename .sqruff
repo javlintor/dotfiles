@@ -1,0 +1,9 @@
+[sqruff]
+dialect = databricks
+rules = all
+templater = dbt
+
+[sqruff: indentation]
+indent_unit = space
+tab_space_size = 4
+indented_joins = True
