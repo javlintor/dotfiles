@@ -105,6 +105,7 @@ source $ZSH/oh-my-zsh.sh
 export SPARK_HOME=/Users/jlinares/spark/spark-3.5.5-bin-hadoop3
 export PATH=$SPARK_HOME/bin:$PATH
 export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
+# This is the default, but I leave it here just to remember
 export XDG_CONFIG_HOME=$HOME/.config
 
 alias nvim-semantic-layer="cd ~/ifco-digital-semantic-layer && source ./.venv/bin/activate && nvim ~/ifco-digital-semantic-layer"
