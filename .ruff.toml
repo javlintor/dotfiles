@@ -1,0 +1,9 @@
+# .ruff.toml
+[lint]
+select = ["ALL"]  # Enable all rules
+ignore = [
+	"ANN401",
+	"COM812",
+	"D",
+	"N815",
+]
