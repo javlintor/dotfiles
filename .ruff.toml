@@ -1,4 +1,5 @@
-# .ruff.toml
+line-length = 100
+
 [lint]
 select = ["ALL"]  # Enable all rules
 ignore = [
