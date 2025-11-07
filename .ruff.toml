@@ -15,3 +15,8 @@ ignore = [
 	"RET504",
 	"S101",
 ]
+
+[lint.flake8-tidy-imports]
+banned-module-level-imports = [
+    "apps",
+]
