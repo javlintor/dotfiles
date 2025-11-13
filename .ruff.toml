@@ -7,8 +7,9 @@ ignore = [
 	"COM812",
 	"D",
 	"ERA001",
-	"N815",
 	"N803",
+	"N815",
+	"PLC0415"
 	"PLR2004",
 	"PTH",
 	"RET502",
@@ -16,7 +17,3 @@ ignore = [
 	"S101",
 ]
 
-[lint.flake8-tidy-imports]
-banned-module-level-imports = [
-    "apps",
-]
