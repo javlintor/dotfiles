@@ -1,23 +1,25 @@
 #!/bin/bash
 
-SESS="my_tmux_session"
+SESS="ifco"
+DIRS=("ifco-digital-semantic-layer" "ifco-digital-data-apps")
 
 tmux has-session -t $SESS 2>/dev/null
 
 if [ $? != 0 ]; then
 	tmux new-session -ds $SESS
-	for dir in "ifco-digital-semantic-layer" "ifco-digital-data-apps"
-	do
-		tmux new-window -t $SESS -n $dir
+	for i in ${!DIRS[@]}; do
+		dir=${DIRS[$i]}
+		if [[ $i -eq 0 ]]; then
+			# tmux index must start in 1
+			tmux rename-window -t $SESS:1 $dir
+		else
+			tmux new-window -t $SESS:$((i+1)) -n $dir
+		fi
 		tmux send-keys -t $SESS:$dir "cd ~/$dir" C-m
 		tmux send-keys -t $SESS:$dir "nvim" C-m
 	done
-	tmux kill-window -t $SESS:0
 
-	# index
-	tmux set-option -g base-index 1
 
 fi
 
-
-tmux attach-session -t $SESS
+tmux attach-session -t $SESS:1
