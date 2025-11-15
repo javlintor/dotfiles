@@ -17,19 +17,6 @@ if [ $? != 0 ]; then
 	# index
 	tmux set-option -g base-index 1
 
-	# statusbar
-	tmux set -g status-position bottom
-	tmux set -g status-justify left
-	tmux set -g status-style 'fg=black'
-	tmux set -g status-left ''
-	tmux set -g status-left-length 10
-	tmux set -g status-right-style 'fg=black bg=white'
-	tmux set -g status-right ''
-	tmux set -g status-right-length 10 
-	tmux set -g window-status-current-style 'fg=black bg=green'
-	tmux set -g window-status-current-format ' #I #W '
-	tmux set -g window-status-style 'fg=green bg=black'
-	tmux set -g window-status-format ' #I #[fg=white]#W '
 fi
 
 
