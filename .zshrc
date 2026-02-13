@@ -117,3 +117,9 @@ fi
 
 # git pull dotfiles and nvim config
 alias syncrepos='(cd ~/dotfiles && git pull) && (cd ~/.config/nvim && git pull)'
+alias syncrepos='(cd ~/dotfiles && git pull) && (cd ~/.config/nvim && git pull)'
+
+dbtd() {
+    dbt "$@" --defer --state prod_artifacts
+}
+
