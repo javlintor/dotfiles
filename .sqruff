@@ -1,9 +1,6 @@
 [sqruff]
-dialect = databricks
-rules = all
+dialect = databricks  # Set to your target database dialect
 templater = dbt
 
-[sqruff: indentation]
-indent_unit = space
-tab_space_size = 4
-indented_joins = True
+[sqruff:templater:dbt]
+profiles_dir = ~/ifco-digital-semantic-layer  # Path to your dbt profiles directory (optional)
