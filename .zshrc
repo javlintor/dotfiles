@@ -123,3 +123,12 @@ dbtd() {
     dbt "$@" --defer --state prod_artifacts
 }
 
+
+# opencode
+export PATH=/Users/javlintor/.opencode/bin:$PATH
+
+# editor 
+export EDITOR='vim'
+
+# opencode
+export OPENCODE_CONFIG='dotfiles/opencode'
