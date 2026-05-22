@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SESS=ifco
-DIRS=(ifco-digital-semantic-layer ifco-digital-data-apps daily_picker_wheel)
+DIRS=(ifco-digital-semantic-layer ifco-digital-data-apps)
 
 tmux has-session -t $SESS 2>/dev/null
 
