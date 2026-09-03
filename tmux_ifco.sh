@@ -20,6 +20,7 @@ for entry in ${DIRS[@]}; do
 		# window 2: claude
 		tmux new-window -t $session: -c ~/$path -n claude
 		tmux send-keys -t $session:claude "claude" C-m
+		tmux select-window -t $session:nvim
 	fi
 done
 
