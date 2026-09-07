@@ -2,7 +2,7 @@
 
 # session_name:relative_path_from_home
 DIRS=(
-	estado_cuentas:estado_cuentas
+	estado_cuentas:code/estado_cuentas
 	dotfiles:dotfiles
 	nvim:.config/nvim
 )
@@ -19,6 +19,9 @@ for entry in ${DIRS[@]}; do
 		tmux new-window -t $session: -c ~/$path -n claude
 		tmux send-keys -t $session:claude "claude" C-m
 		tmux select-window -t $session:nvim
+		# window 2: opencode
+		tmux new-window -t $session: -c ~/$path -n opencode
+		tmux send-keys -t $session:opencode "opencode" C-m
 	fi
 done
 
