@@ -15,13 +15,10 @@ for entry in ${DIRS[@]}; do
 		# window 1: nvim
 		tmux new-session -ds $session -c ~/$path -n nvim
 		tmux send-keys -t $session:nvim "nvim" C-m
-		# window 2: claude
-		tmux new-window -t $session: -c ~/$path -n claude
-		tmux send-keys -t $session:claude "claude" C-m
-		tmux select-window -t $session:nvim
 		# window 2: opencode
 		tmux new-window -t $session: -c ~/$path -n opencode
 		tmux send-keys -t $session:opencode "opencode" C-m
+		tmux select-window -t $session:nvim
 	fi
 done
 
