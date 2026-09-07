@@ -5,6 +5,7 @@ DIRS=(
 	ifco-digital-semantic-layer:ifco-digital-semantic-layer
 	ifco-digital-data-apps:ifco-digital-data-apps
 	ifco-digital-ops-optimizer-ingestion:ifco-digital-ops-optimizer-ingestion
+	ifco-digital-web-apps:ifco-digital-web-apps
 	dotfiles:dotfiles
 	nvim:.config/nvim
 )
