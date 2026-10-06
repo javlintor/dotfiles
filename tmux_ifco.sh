@@ -3,9 +3,8 @@
 # session_name:relative_path_from_home
 DIRS=(
 	ifco-digital-semantic-layer:ifco-digital-semantic-layer
-	ifco-digital-data-apps:ifco-digital-data-apps
-	ifco-digital-ops-optimizer-ingestion:ifco-digital-ops-optimizer-ingestion
 	ifco-digital-web-apps:ifco-digital-web-apps
+	ifco-digital-ops-optimizer-ingestion:ifco-digital-ops-optimizer-ingestion
 	dotfiles:dotfiles
 	nvim:.config/nvim
 )
