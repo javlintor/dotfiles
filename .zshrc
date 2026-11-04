@@ -102,8 +102,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export SPARK_HOME=/Users/jlinares/spark/spark-3.5.5-bin-hadoop3
-export PATH=$SPARK_HOME/bin:$PATH
 export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 export PATH="$HOME/.bin:$PATH"
 # This is the default, but I leave it here just to remember
@@ -120,7 +118,7 @@ alias syncrepos='(cd ~/dotfiles && git pull) && (cd ~/.config/nvim && git pull)'
 alias syncrepos='(cd ~/dotfiles && git pull) && (cd ~/.config/nvim && git pull)'
 
 dbtd() {
-    dbt "$@" --defer --state prod_artifacts
+    dbt "$@" --defer --state prod_artifacts --profile local
 }
 
 
