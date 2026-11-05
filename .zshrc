@@ -118,7 +118,17 @@ alias syncrepos='(cd ~/dotfiles && git pull) && (cd ~/.config/nvim && git pull)'
 alias syncrepos='(cd ~/dotfiles && git pull) && (cd ~/.config/nvim && git pull)'
 
 dbtd() {
-    dbt "$@" --defer --state prod_artifacts --profile local
+    dbt "$@" --defer --state prod_artifacts
+}
+
+# timeit <comando...>: ejecuta el comando e imprime su tiempo de ejecución por stdout
+zmodload zsh/datetime
+timeit() {
+    local start=$EPOCHREALTIME
+    "$@"
+    local rc=$?
+    printf '\n⏱️  Tiempo de ejecución: %.3fs\n' $(( EPOCHREALTIME - start ))
+    return $rc
 }
 
 
