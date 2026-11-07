@@ -102,8 +102,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export SPARK_HOME=/Users/jlinares/spark/spark-3.5.5-bin-hadoop3
-export PATH=$SPARK_HOME/bin:$PATH
 export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 export PATH="$HOME/.bin:$PATH"
 # This is the default, but I leave it here just to remember
@@ -122,6 +120,20 @@ alias syncrepos='(cd ~/dotfiles && git pull) && (cd ~/.config/nvim && git pull)'
 dbtd() {
     dbt "$@" --defer --state prod_artifacts
 }
+
+# timeit <comando...>: ejecuta el comando e imprime su tiempo de ejecución por stdout
+zmodload zsh/datetime
+timeit() {
+    local start=$EPOCHREALTIME
+    "$@"
+    local rc=$?
+    printf '\n⏱️  Tiempo de ejecución: %.3fs\n' $(( EPOCHREALTIME - start ))
+    return $rc
+}
+
+
+# opencode
+export PATH=/Users/javlintor/.opencode/bin:$PATH
 
 # editor 
 export EDITOR='vim'
