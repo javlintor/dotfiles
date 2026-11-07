@@ -3,6 +3,8 @@
 # session_name:relative_path_from_home
 DIRS=(
 	estado_cuentas:code/estado_cuentas
+	bakery_management:code/bakery_management
+	portfolio:code/portfolio
 	dotfiles:dotfiles
 	nvim:.config/nvim
 )
