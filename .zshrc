@@ -122,12 +122,34 @@ dbtd() {
 }
 
 # timeit <comando...>: ejecuta el comando e imprime su tiempo de ejecución por stdout
-zmodload zsh/datetime
+zmodload zsh/datetime zsh/mathfunc
 timeit() {
-    local start=$EPOCHREALTIME
-    "$@"
-    local rc=$?
-    printf '\n⏱️  Tiempo de ejecución: %.3fs\n' $(( EPOCHREALTIME - start ))
+    local start=$EPOCHREALTIME rc tick= rows=$LINES bar=1
+    # Solo si stdout es una terminal. Barra fija en la última fila (región de scroll);
+    # en comandos a pantalla completa se usa el título de la ventana.
+    if [[ -t 1 ]]; then
+        [[ ${1:t} == (vim|vi|nvim|less|man|htop|top|ssh|tmux|watch) ]] && bar=0
+        # \n\e[1A garantiza una fila libre abajo; \e7/\e8 guardan/restauran el cursor (DECSTBM lo manda a casa)
+        (( bar )) && printf '\n\e[1A\e7\e[1;%dr\e8' $(( rows - 1 )) > /dev/tty
+        while true; do
+            if (( bar )); then
+                printf '\e7\e[%d;1H\e[2K⏱️  %ds\e8' $rows $(( int(EPOCHREALTIME - start) ))
+            else
+                printf '\e]0;⏱️ %ds\a' $(( int(EPOCHREALTIME - start) ))
+            fi > /dev/tty
+            sleep 1
+        done &!
+        tick=$!
+    fi
+    # always: se ejecuta también si el comando se interrumpe con Ctrl-C
+    { "$@"; rc=$? } always {
+        if [[ -n $tick ]]; then
+            kill $tick 2>/dev/null
+            # libera la región de scroll y borra la barra
+            (( bar )) && printf '\e7\e[r\e[%d;1H\e[2K\e8' $rows > /dev/tty
+        fi
+        printf '\n⏱️  Tiempo de ejecución: %.3fs\n' $(( EPOCHREALTIME - start ))
+    }
     return $rc
 }
 
@@ -140,3 +162,18 @@ export EDITOR='vim'
 
 # opencode
 export OPENCODE_CONFIG='dotfiles/opencode'
+
+# pnpm
+export PNPM_HOME='/Users/jlinares/Library/pnpm'
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
+
+# bun completions
+[ -s "/Users/jlinares/.bun/_bun" ] && source "/Users/jlinares/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
