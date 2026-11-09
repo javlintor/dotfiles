@@ -159,21 +159,3 @@ export PATH=/Users/javlintor/.opencode/bin:$PATH
 
 # editor 
 export EDITOR='vim'
-
-# opencode
-export OPENCODE_CONFIG='dotfiles/opencode'
-
-# pnpm
-export PNPM_HOME='/Users/jlinares/Library/pnpm'
-case ":$PATH:" in
-  *":$PNPM_HOME/bin:"*) ;;
-  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
-esac
-# pnpm end
-
-# bun completions
-[ -s "/Users/jlinares/.bun/_bun" ] && source "/Users/jlinares/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
