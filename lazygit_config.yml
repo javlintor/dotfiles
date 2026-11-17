@@ -1,0 +1,4 @@
+os:
+  editPreset: "nvim-remote"
+  # "o" uses `open` (VS Code) by default; send it to the parent nvim instead
+  open: '[ -z "$NVIM" ] && (nvim -- {{filename}}) || (nvim --server "$NVIM" --remote-send "<C-\><C-n>:q<CR>" && nvim --server "$NVIM" --remote {{filename}})'
