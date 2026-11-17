@@ -159,3 +159,10 @@ export PATH=/Users/javlintor/.opencode/bin:$PATH
 
 # editor 
 export EDITOR='vim'
+
+# bun completions
+[ -s "/Users/jlinares/.bun/_bun" ] && source "/Users/jlinares/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
