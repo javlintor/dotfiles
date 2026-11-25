@@ -118,7 +118,7 @@ alias syncrepos='(cd ~/dotfiles && git pull) && (cd ~/.config/nvim && git pull)'
 alias syncrepos='(cd ~/dotfiles && git pull) && (cd ~/.config/nvim && git pull)'
 
 dbtd() {
-    dbt "$@" --defer --state prod_artifacts
+    dbt "$@" --defer --state prod_artifacts --favor-state
 }
 
 # timeit <comando...>: ejecuta el comando e imprime su tiempo de ejecución por stdout
